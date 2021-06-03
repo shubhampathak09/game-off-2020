@@ -33,6 +33,9 @@ public class Employee {
 		persons[2]=new person(73,167,25);
 		
 		
+	//	Stack<Integer>St=new Stack<>();
+		//St.po
+		
 		System.out.println(persons);
 	}
 }

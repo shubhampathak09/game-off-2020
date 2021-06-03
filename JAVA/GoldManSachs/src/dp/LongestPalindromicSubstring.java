@@ -8,7 +8,9 @@ public class LongestPalindromicSubstring {
 		int ans=0;
 		
 		boolean[][] dp=new boolean[s.length()][s.length()];
-		
+//		
+//		int starti=0;
+//		int endi=0;
 		
 		for(int g=0;g<s.length();g++)
 		{
@@ -34,12 +36,17 @@ public class LongestPalindromicSubstring {
 				}
 				if(dp[i][j]==true)
 				{
+					if(ans>g+1)
+					{
+//			         starti=i;
+//			         endi=j;
+					}
 					ans=Math.max(ans, g+1);
 				}
 			}
 		}
 		
-		
+//		System.out.println(s.substring(starti,endi+1));
 		 
 		return ans;
 	}
