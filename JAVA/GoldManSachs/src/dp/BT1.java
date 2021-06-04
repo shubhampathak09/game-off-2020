@@ -2,6 +2,7 @@ package dp;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.*;
 
 public class BT1 {
 	
@@ -11,6 +12,19 @@ public class BT1 {
 		int data;
 		Node left;
 		Node right;
+	}
+	
+	public static class Pair
+	{
+		
+		Node root;
+		int val;
+		Pair(Node root,int val)
+		{
+			this.root=root;
+			this.val=val;
+		}
+		
 	}
 
 	public static Node newNode(int data)
@@ -149,6 +163,47 @@ public class BT1 {
 		}
 	}
 	
+	public static void verticalView(Node root)
+	{
+		
+		
+		Queue<Pair>q=new LinkedList<>();
+		
+		HashMap<Integer,Integer>hm=new HashMap<>();
+		
+		
+		q.add(new Pair(root,0));
+		
+	//	hm.put(root,0);
+		
+		while(!q.isEmpty())
+		{
+			
+			int sz=q.size();
+			
+			for(int i=1;i<=sz;i++)
+			{
+				
+				Pair temp=q.remove();
+				if(hm.containsKey(temp.val)==false)
+				{
+					hm.put(temp.val, temp.root.data);
+					System.out.print(hm.get(temp.val)+" ");
+				}
+				
+				if(temp.root.left!=null)
+					q.add(new Pair(temp.root.left,temp.val-1));
+				
+				if(temp.root.right!=null)
+				{
+					q.add(new Pair(temp.root.right,temp.val+1));
+				}
+			}
+			
+		}
+			
+	}
+	
 	public static void ZigZagTraversal(Node root)
 	{
 		
@@ -187,6 +242,13 @@ public class BT1 {
 	// max sum from node to node
 	
 	
+	public static void bottomView(Node root)
+	{
+		// logic
+	}
+	
+	
+	
 	
 	public static void main(String[] args)
 	{
@@ -220,7 +282,9 @@ public class BT1 {
 		//Left view
 	//	leftView(root);
 		
-		rightView(root);
-	
+		//rightView(root);
+	    
+		verticalView(root);
+		 // great
 	}
 }
