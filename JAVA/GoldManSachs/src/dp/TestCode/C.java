@@ -1,6 +1,6 @@
 package dp.TestCode;
 
-public interface C extends B {
+public interface C  {
 
 	void read();
 }
