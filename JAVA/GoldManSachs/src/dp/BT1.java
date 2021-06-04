@@ -95,32 +95,26 @@ public class BT1 {
 	public static void levelorder(Node root)  // review ??
 	{
 		
+		 
 		Queue<Node>q=new LinkedList<>();
-		
 		q.add(root);
-		
-		while(q.isEmpty()==false)
+		while(!q.isEmpty())
 		{
 			
-		int sz=q.size();
-		
-//		if(sz==0)
-//			break;
-		
-		while(sz>0)
-		{
-		 
-		Node front=q.peek();
-		q.remove();
-		System.out.print(front.data+" ");
-		if(front.left!=null)
-			q.add(front.left);
-		if(front.right!=null)
-			q.add(front.right);
-		
-	//	System.out.println();
-		}
-		System.out.println();
+			int sz=q.size();
+			
+			for(int i=1;i<=sz;i++)
+			{
+				Node temp=q.remove();
+				System.out.print(temp.data+" ");
+				
+				if(temp.left!=null)
+					q.add(temp.left);
+				
+				if(temp.right!=null)
+					q.add(temp.right);
+			}
+			System.out.println();
 		}
 		
 		
@@ -157,5 +151,7 @@ public class BT1 {
 		diameter(root);
 		//levelorder(root);
 		System.out.println(di);
+		
+		levelorder(root);
 	}
 }
