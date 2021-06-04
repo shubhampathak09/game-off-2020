@@ -87,6 +87,68 @@ public class BT1 {
 		return ans;
 	}
 	
+	public static void rightView(Node root)
+	{
+		
+		Queue<Node>q=new LinkedList<>();
+		
+		q.add(root);
+		
+		
+		while(!q.isEmpty())
+		{
+			int sz=q.size();
+			
+			for(int i=1;i<=sz;i++)
+			{
+				Node temp=q.remove();
+				
+						if(i==sz)
+				{
+					System.out.print(temp.data+" ");
+				}
+						
+				if(temp.left!=null)
+					q.add(temp.left);
+				if(temp.right!=null)
+					q.add(temp.right);
+			}
+			
+		}
+	}
+	
+	public static void leftView(Node root)
+	{
+		
+		Queue<Node>q=new LinkedList<>();
+		q.add(root);
+		
+		
+		while(!q.isEmpty())
+		{
+			
+			
+			int sz=q.size();
+			
+			for(int i=1;i<=sz;i++)
+			{
+				
+				Node temp=q.remove();
+				
+				if(i==sz)
+				System.out.print(temp.data+" ");
+				
+				if(temp.left!=null)
+				q.add(temp.left);
+				
+				if(temp.right!=null)
+				q.add(temp.right);
+				
+			}
+			
+		}
+	}
+	
 	public static void ZigZagTraversal(Node root)
 	{
 		
@@ -145,13 +207,20 @@ public class BT1 {
 		
 		System.out.println();
 		
-		System.out.println(maxDepth(root));
+	//	System.out.println(maxDepth(root));
 		
 		
-		diameter(root);
+	//	diameter(root);
 		//levelorder(root);
-		System.out.println(di);
+//		System.out.println(di);
 		
-		levelorder(root);
+//		levelorder(root);
+		
+		
+		//Left view
+	//	leftView(root);
+		
+		rightView(root);
+	
 	}
 }
