@@ -185,18 +185,18 @@ public class BT1 {
 			{
 				
 				Pair temp=q.remove();
-				if(hm.containsKey(temp.val)==false)
+				if(hm.containsKey(temp.val)==false)  // check of hashmap alreadu ciontaines node value to that hd 
 				{
-					hm.put(temp.val, temp.root.data);
+					hm.put(temp.val, temp.root.data);  
 					System.out.print(hm.get(temp.val)+" ");
 				}
 				
-				if(temp.root.left!=null)
-					q.add(new Pair(temp.root.left,temp.val-1));
+				if(temp.root.left!=null)   // got to left, and do hd-1, pair->NODE  AND HD
+					q.add(new Pair(temp.root.left,temp.val-1));  // TEMP.ROOT.LEFT->GOING LEFT AND DOING HD-1
 				
 				if(temp.root.right!=null)
 				{
-					q.add(new Pair(temp.root.right,temp.val+1));
+					q.add(new Pair(temp.root.right,temp.val+1));  // TEMP.ROOT.RIGHT AND DO hd+1 //HASHMAP WILL GET UODATED BASED ON HD PRESENT OR NOT ALREADY, IF ALREADY PRESENT NOT UPDATES JUST CONTINUE
 				}
 			}
 			
