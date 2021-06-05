@@ -21,7 +21,7 @@ class testc extends testI
     	
 	public void read()
 	{
-		  super.read();
+		  super.read(); 
 		System.out.println("this is testc");
 	}
 	
