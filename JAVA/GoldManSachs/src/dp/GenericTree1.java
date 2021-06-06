@@ -12,6 +12,21 @@ public  class GenericTree1 {
 	ArrayList<Node>chidren=new ArrayList<>();
 	
 	
+	public static int getMax(Node node)
+	{
+		
+		
+		int mx=Integer.MIN_VALUE;
+		
+		for(Node ch:node.chidren)
+		{
+			 int mchild=getMax(ch);
+			 mx=Math.max(mchild, mx);
+		}
+		mx=Math.max(mx, node.data);
+		return mx;
+	}
+	
 	public static int getSize(Node node)
 	{
 		
@@ -24,6 +39,36 @@ public  class GenericTree1 {
 		sz=sz+1;
 		
 		return sz;
+	}
+	
+	public static void traverse(Node node)
+	{
+		
+		System.out.println("Node pre "+node.data);
+		
+		for(Node child:node.chidren)
+		{
+			System.out.println("Edge pre "+node.data+" -> "+child.data);
+			traverse(child);
+			System.out.println("Node post "+child.data);
+			System.out.println(" Edge post "+node.data+" -> "+child.data);
+		}
+	}
+	
+	public static int height(Node node)
+	{
+		
+		int he=0;
+		
+		for(Node ch:node.chidren)
+		{
+			
+			int cal=height(ch);
+			he=Math.max(he, cal);
+		}
+		he=he+1;
+		
+		return he;
 	}
 	
 	public void display(Node node)
@@ -93,5 +138,11 @@ public  class GenericTree1 {
 		root.display(root);
 		
 		System.out.println(root.getSize(root));
+		
+		System.out.println("Max value is -> "+root.getMax(root));
+		
+		System.out.println("Height of generic tree: "+root.height(root));
+		
+		root.traverse(root);
 	}
 }
