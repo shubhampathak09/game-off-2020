@@ -1,8 +1,11 @@
 package dp;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.Queue;
 import java.util.Stack;
-
+import java.util.LinkedList;
 public  class GenericTree1 {
 
 	private static class Node
@@ -41,18 +44,192 @@ public  class GenericTree1 {
 		return sz;
 	}
 	
-	public static void traverse(Node node)
+	
+	public static void levelorder(Node node)
 	{
 		
-		System.out.println("Node pre "+node.data);
+		
+		Queue<Node>queue=new LinkedList<>();
+		
+		queue.add(node);
+		
+		while(!queue.isEmpty())
+		{
+			
+			
+			Node temp=queue.remove();
+			System.out.print(temp.data+" ");
+			
+			for(Node child:temp.chidren)
+			{
+				queue.add(child);
+			}
+		}
+		System.out.println(".");
+	}
+	
+	
+	public static Node Mirror(Node node)
+	{
+		
+		
+	//	ArrayList<Node>temp=root.chidren;
 		
 		for(Node child:node.chidren)
 		{
+			child=Mirror(child);
+		}
+			
+//		for(int i=0;i<root.chidren.size();i++)
+//		{
+//			
+//			int tem=root.chidren.get(i).data;
+//			root.chidren.get(i).data=root.chidren.get(root.chidren.size()-1-i).data;
+//			root.chidren.get(root.chidren.size()-1-i).data=tem;
+//		}
+		Collections.reverse(node.chidren);
+	 
+		return node;
+	 
+	}
+	
+	
+	public static void zigzag(Node node)
+	{
+		
+		
+		Queue<Node>q=new LinkedList<>();
+		
+		
+		q.add(node);
+		
+		int l=1;
+		
+		while(q.size()>0)
+		{
+			int sz=q.size();
+			
+			for(int i=1;i<=sz;i++)
+			{
+			    	
+				Node temp=q.remove();
+				System.out.print(temp.data+" ");
+				if(l%2==0)
+				{
+					for(int i1=0;i1<temp.chidren.size();i1++)
+					{
+					q.add(temp.chidren.get(i1));
+					}
+				}
+				else
+				{
+					for(int i1=temp.chidren.size()-1;i1>=0;i1--)
+					{
+						q.add(temp.chidren.get(i1));
+					}
+				}
+			}
+			l=l+1;
+			System.out.println();
+		}
+	}// cool
+	
+//	public static void ZigZagLevelOrder(Node node)
+//	{
+//		
+//		
+//		//Deque<Node> q=new LinkedList<>();
+//		Deque dq=new LinkedList<Node>();
+//		dq.addFirst(node);
+//		
+//		int l=0;
+//		while(!dq.isEmpty())
+//		{
+//			int sz=dq.size();
+//			
+//			for(int i=1;i<=sz;i++)
+//			{
+//			
+//			Node temp=(Node) dq.removeFirst();
+//			
+//			System.out.print(temp.data+" ");
+//			
+//			if(l==0)
+//			{
+//				// enquer right to left
+//				for(Node child:temp.chidren)
+//				{
+//					dq.addLast(child);
+//				}
+//				l=1;
+//			}
+//			else
+//			{
+//				for(Node child:temp.chidren)
+//				{
+//					dq.addFirst(child);
+//				}
+//				l=0;
+//			}
+//		}
+//			System.out.println();
+//		}
+//	}
+	
+	
+	
+	
+	public static void levelOrderLineWise(Node node)
+	{
+		
+		Queue<Node>q=new LinkedList<>();
+		
+		q.add(node);
+		
+		while(q.isEmpty()==false)
+		{
+			int sz=q.size();
+			
+			for(int i=1;i<=sz;i++)
+			{
+				Node temp=q.remove();
+				System.out.print(temp.data+" ");
+				
+				for(Node child:temp.chidren)
+				{
+					q.add(child);
+				}
+			}
+			System.out.println();
+		}
+		
+	}
+	
+	public static void traverse(Node node)
+	{   
+		// area=eulers left,on wasy deeep in recusrion
+		// before going deep into recursion
+		// eulers left
+		// nodes pre area
+		
+		System.out.println("Node pre "+node.data);
+		
+	
+		
+		for(Node child:node.chidren)
+		{
+			// edge pre area
 			System.out.println("Edge pre "+node.data+" -> "+child.data);
 			traverse(child);
-			System.out.println("Node post "+child.data);
+	//		System.out.println("Node post "+child.data);
 			System.out.println(" Edge post "+node.data+" -> "+child.data);
 		}
+		System.out.println("Node Post Area "+node.data);
+		// Node post area, after  resucrsion
+		// on the way out of recursion
+		// nodes post area-> Area 2
+		// Eulers out of recusrion
+		
 	}
 	
 	public static int height(Node node)
@@ -70,6 +247,28 @@ public  class GenericTree1 {
 		
 		return he;
 	}
+	
+	public Node removeLeaf(Node node)
+	{
+		
+		
+		// temove the leave from children
+		 for(int i=node.chidren.size()-1;i>=0;i--)
+		 {
+			 if(node.chidren.get(i).chidren.size()==0)
+			 {
+				 node.chidren.remove(i);			 }
+		 }
+	    
+		for(Node child:node.chidren)
+		{
+			child=removeLeaf(child);
+		}
+		
+		 
+		 return node;
+	}
+
 	
 	public void display(Node node)
 	{
@@ -137,12 +336,31 @@ public  class GenericTree1 {
 		
 		root.display(root);
 		
-		System.out.println(root.getSize(root));
+//		System.out.println(root.getSize(root));
+//		
+//		System.out.println("Max value is -> "+root.getMax(root));
+//		
+//		System.out.println("Height of generic tree: "+root.height(root));
 		
-		System.out.println("Max value is -> "+root.getMax(root));
+//		root.traverse(root);
+//		
+//		
+//		root.levelorder(root);
+//		
+//		
+//		root.levelOrderLineWise(root);
+//		
+//		root.zigzag(root);
 		
-		System.out.println("Height of generic tree: "+root.height(root));
+//		
+//		Node miroot=root.Mirror(root);
+//		
+//		root.display(miroot);  // shit  use colections to rverse very imp concept to reverse
 		
-		root.traverse(root);
+		
+		root.removeLeaf(root);
+		
+		root.display(root);
+		
 	}
 }
