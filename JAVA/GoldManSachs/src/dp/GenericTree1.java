@@ -248,6 +248,76 @@ public  class GenericTree1 {
 		return he;
 	}
 	
+	public static boolean find(int x,Node node)
+	{
+		
+		if(node.data==x)
+		{
+			return true;
+		}
+		
+		for(Node child:node.chidren)
+		{
+			if(find(x,child))
+				return true;
+		}
+		
+		return false;
+	}
+	
+	public static Node linearize2(Node node)
+	{
+		if(node.chidren.size()==0)
+			return node;
+		
+		Node lkt=linearize2(node.chidren.get(node.chidren.size()-1));
+		
+		while(node.chidren.size()>1)
+		{
+			Node nodeLast=node.chidren.remove(node.chidren.size()-1);
+			Node secondLast=node.chidren.get(node.chidren.size()-1);
+			
+			Node slkt=linearize2(secondLast);
+			
+			slkt.chidren.add(nodeLast);
+		}
+		
+		return lkt;
+	}
+	
+	public static Node getTail(Node node)
+	{
+		while(node.chidren.size()>=0)
+		{
+			
+			node=node.chidren.get(0);
+		}
+		
+		return node;
+	}
+	
+	public static void linearize(Node node)
+	{
+		
+		
+		for(Node child:node.chidren)
+		{
+			linearize(child);
+		}
+		
+		while(node.chidren.size()>1)
+		{
+			Node last=node.chidren.remove(node.chidren.size()-1);
+			Node secondlast=node.chidren.get(node.chidren.size()-1); 
+			
+			
+			Node slt=getTail(secondlast);
+			slt.chidren.add(last);
+			
+			
+		}
+	}
+	
 	public Node removeLeaf(Node node)
 	{
 		
@@ -291,9 +361,28 @@ public  class GenericTree1 {
 			 display(ch);
 		 }
 	}
-    
 	
+	public static void rootToNodePath(Node root,Node node,String path)
+	{
+		
+		path=path+root.data;
+		
+		if(root.data==node.data)
+		{
+			
+			System.out.println(path);
+			return;
+		}
+		
+		for(Node child:root.chidren)
+		{
+			rootToNodePath(child,node,path);
+		}
+		
+		return;
 	}
+	
+    
 	
 	
 	public static void main(String[] args)
@@ -358,9 +447,25 @@ public  class GenericTree1 {
 //		root.display(miroot);  // shit  use colections to rverse very imp concept to reverse
 		
 		
-		root.removeLeaf(root);
+	//	root.removeLeaf(root);
+		
+		root.display(root);
+		 
+		
+		//root.linearize(root);
 		
 		root.display(root);
 		
+		
+		System.out.print(root.find(100,root));
+		
+		String path="";
+		
+		//Node node=new Node();
+		System.out.println();
+		
+		root.rootToNodePath(root, root.chidren.get(1), path);
+		
 	}
+}
 }
