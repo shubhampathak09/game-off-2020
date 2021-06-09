@@ -17,10 +17,10 @@
 using namespace std;
 
 
-void generate(string inp,string op,int k)
+void generate(string inp,string op)
 {
 	//int val=op.length();
-	if(inp.length()==0&&op.length()==k)
+	if(inp.length()==0)
 	{
 		cout<<op<<endl;
 		return;
@@ -31,8 +31,8 @@ void generate(string inp,string op,int k)
 	string op2=op;
 	op2.push_back(ch);
 	inp.erase(inp.begin()+0);
-	generate(inp,op1,k);
-	generate(inp,op2,k);
+	generate(inp,op1);
+	generate(inp,op2);
 	
 }
 int main()
@@ -45,7 +45,7 @@ int main()
 	int n=s.length();
 	
 	int k=2;
-	generate(s,op,k);
+	generate(s,op);
 	
 	
 }

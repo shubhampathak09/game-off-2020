@@ -45,3 +45,21 @@ cout<<power2(2,3);
 
 
 }
+
+//
+//pre 2
+//pre 1
+//in 1
+//post 1
+// in 2
+//pre 1
+//in 1
+//post 1
+//
+//post 2
+////fuck
+////
+////pre 1
+////in 1
+////post 1
+

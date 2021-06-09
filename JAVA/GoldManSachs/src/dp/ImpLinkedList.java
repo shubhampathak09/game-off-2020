@@ -206,6 +206,27 @@ public class ImpLinkedList {
             size=size+1;
 			}
 		}
+		public static int kthNodeFromEnd(int k)
+		{
+			
+			Node slow=head;
+			Node fast=head;
+			
+			for(int i=1;i<=k;i++)
+			{   
+				//System.out.println(i);
+				fast=fast.next;
+			//	System.out.println(fast);
+			}
+			
+			while(fast.next!=null)
+			{
+				slow=slow.next;
+				fast=fast.next;
+			}
+			
+			return slow.data;
+		}
 		
 		public static int getAtIndex(int index)
 		{
@@ -229,6 +250,21 @@ public class ImpLinkedList {
 			return temp.data;
 		}
 		
+		public static int middle()
+		{
+			
+			Node slow=head;
+			Node fast=head;
+			
+			while(fast!=null&&fast.next.next!=null)
+			{
+				
+				slow=slow.next;
+				fast=fast.next.next;
+				
+			}
+			return slow.data;
+		}
 		
 		public static void reverse()
 		{
@@ -246,6 +282,8 @@ public class ImpLinkedList {
 			head=prev;
 		    
 		}
+		
+	
 		
 		public static void main(String[] args)
 		{
@@ -345,12 +383,38 @@ public class ImpLinkedList {
 		    
 		   
 		   // 7
-		   reverse();
-		   display();
-		    System.out.println(head.data);
-		    
+//		   reverse();
+//		   display();
 		   
-		    
+		   System.out.println();
+		 
+		   System.out.println(head.data);
+		   
+		  int ans=kthNodeFromEnd(2);
+		   
+		   
+		   System.out.println(ans);
+		   
+		    // 8  removeAtIndex
+		   
+		   // now 41 more to gokthNodeFromEnd
+		   
+		   
+		   
+		   //cool
+		   
+		   // now 40 more question
+		   
+		   //11  find middle of linked list
+		   
+		   System.out.println("Middle of Linked list is: "+middle());
+		   
+		   
+		   //12
+		   
+		   // merge two sorted linked lists
+		   
+		   
 		}
 		
 	}
@@ -361,7 +425,8 @@ public class ImpLinkedList {
     //  int val=getAtIndex(2);	
       //8
 	
-	 
+	 //10
+	 //kth node from end no iteratve or siz  int ans=kthNodeFromEnd(2);
 	}
 	
 
