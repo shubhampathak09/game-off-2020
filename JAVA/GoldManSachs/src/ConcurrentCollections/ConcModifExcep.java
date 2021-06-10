@@ -18,7 +18,7 @@ public class ConcModifExcep extends Thread {
 		{
 			e.printStackTrace();
 		}
-		System.out.println("updating the list");
+		System.out.println("child thread updating the list");
 		al.add("D");
 	}
 	
