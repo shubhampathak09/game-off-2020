@@ -61,6 +61,12 @@ int main()
 	root1->left->right=new node(5);
 	
 	root1->right->left=new node(8);
+    
 	
-	printkleveldown(root,2);
+	struct node*root3=new node(1);
+	root3->left=new node(2);
+	root3->right=new node(3);
+	
+		
+	printkleveldown(root3,1);
 }
