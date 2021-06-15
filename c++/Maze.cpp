@@ -89,6 +89,6 @@ bool solve(vector<vector<int>>maze,int srcx,int srcy,int destx,int desty)
 	
 	}
 	
-
+// goldman also gg on 15
 
 
