@@ -77,7 +77,7 @@ public class LRUCache {
 		lru.refer(5);
 		
 		lru.display();
-	}`
+	}
 	
 }
 // somthing getting messed up here

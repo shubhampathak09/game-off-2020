@@ -3,7 +3,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
+// fuck it s
 int main()
 {
 	
