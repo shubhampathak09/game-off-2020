@@ -1,4 +1,3 @@
-// kruskal
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -6,60 +5,92 @@ using namespace std;
 struct edge
 {
 	
-	int src;
-	int dest;
-	int wt;
+	int a;
+	int b;
+	int w;
 	
-	edge(int src,int dest,int wt)
-	{
-		this->src=src;
-		this->dest=dest;
-		this->wt=wt;
-	}
-};
+	
+ } ;
 
 
-vector<edge*>g(10001);
+edge ar[100001];
 
-vector<int>parent(10001);
+int parent[10001];
 
-//
-bool cmp(edge *e1,edge *e2)
+
+int find(int a)
 {
-	if(e1->wt<e2->wt)
-	{
-		return true;
-	}else
-	return false;
+	
+if(parent[a]==-1)
+return a;
+
+return find(parent[a]);	
+}
+
+
+void merge(int a,int b)
+{
+	int x=find(a);
+	int y=find(b);
+	
+	
+    parent[y]=x;	
+}
+
+bool cmp(edge e1,edge e2)
+{
+	
+	return e1.w<e2.w;
+	
 }
 
 int main()
 {
 	
+int n,m,a,b,w;
+
+cin>>n>>m;
+
+
+for(int i=1;i<=n;i++)
+{
+	parent[i]=-1;
+}
 	
+ 
+ for(int i=0;i<m;i++)
+ {
+ 	cin>>ar[i].a>>ar[i].b>>ar[i].w;
+ 	
+ }
+ 
+ 
+sort(ar,ar+m,cmp); 
+
+int we=0;
+
+//for(int i=0;i<m;i++)
+//{
+//	
+//	cout<<ar[i].a<<" "<<ar[i].b<<" "<<ar[i].w;
+//	cout<<endl;	
+//}
+
+for(int i=0;i<m;i++)
+{
 	
-	int n,m;
-	cin>>n>>m;
+	a=find(ar[i].a);
+	b=find(ar[i].b);
 	
+//	cout<<a<<b<<endl;
 	
-	for(int i=1;i<=m;i++)
-	{
-		int a,b,c;
-	
-		cin>>a>>b>>c;
-			g[i-1]=new edge(a,b,c);
-//		g[i-1].src=a;
-//		g[i-1].dest=b;
-//		g[i-1].wt=c;
-		
+    if(a!=b)
+    {
+    	merge(a,b);
+    	we+=ar[i].w;
 	}
 	
-	sort(g.begin(),g.begin()+m,cmp);  //yeppppp
-	
-	
-	for(int i=0;i<m;i++)
-	{
-		cout<<g[i]->src<<" "<<g[i]->dest<<" "<<g[i]->wt;
-		cout<<endl;
-	}
+}
+ 
+ cout<<we;
 }
