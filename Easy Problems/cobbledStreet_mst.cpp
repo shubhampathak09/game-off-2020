@@ -21,7 +21,7 @@ bool cmp(edge e1,edge e2)
 
 edge arr[300001];
 int parent[10001];
-
+edge result[300001];
 
 int find(int a)
 {
@@ -29,8 +29,10 @@ int find(int a)
 	if(parent[a]==-1)
 	return a;
 	
-	return find(parent[a]);
+	return parent[a]=find(parent[a]); // path compression
 	
+	
+	// return find(parent[a]);
 }
 
 void merge(int a,int b)
@@ -74,13 +76,19 @@ int main()
 		for(int i=1;i<=m;i++)
 		{
 			
-			a=find(arr[i].a);
-			b=find(arr[i].b);
+			a=find(arr[i].a);  //1
+			b=find(arr[i].b);  //2
 			
 			if(a!=b)
 			{
 				merge(a,b);
+				// make b into a b's parent is a
 				wt+=arr[i].w;
+				
+				result[i].a=a;
+				result[i].b=b;
+				result[i].w=arr[i].w;
+				
 			}
 			
 		}
@@ -90,8 +98,16 @@ int main()
 		cout<<endl;
 		
 		
+		cout<<"Printing the MST path.."<<endl;
+		
+		
+		for(int i=1;i<=n-1;i++)
+		{
+			cout<<result[i].a<<" "<<result[i].b<<" "<<result[i].w<<endl; // slight variation
+		}
+		
 	}
-	
+    // mst path +total weight+path compression	
 }
 
 
