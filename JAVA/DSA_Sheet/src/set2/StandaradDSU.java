@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class StandaradDSU {
 
+	// connected componensts using DSU
 	
 	public static int[] parent=new int[100001]; 
 	
@@ -58,6 +59,7 @@ public class StandaradDSU {
 			a=s.nextInt();
 			b=s.nextInt();
 			
+			if(parent[a]!=parent[b])
 			union(a,b);
 		}
 		int count=0;
