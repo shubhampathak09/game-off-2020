@@ -11,21 +11,23 @@ public class MoveAllNegetivestoStart {
 		
 		int start=0;
 		int end=n-1;
-		for(int i=0;i<n;i++)
+		while(start<end)
 		{
-			
-		if(a[i]<0)
+		if(a[start]<0)
 		{
-			a[start]=a[i];
+		//	a[start]=a[end];
 			start=start+1;
 		}
 		else
 		{
-			a[end]=a[i];
+			int temp=a[end];
+			a[end]=a[start];
+			a[start]=temp;
 			end=end-1;
 		}
 		
 		}
+	
 		
 		for(int i=0;i<n;i++)
 		{
