@@ -60,7 +60,8 @@ public class RootNodePath {
 //
 //	}
 
-	
+	// if there is apth on on right? o/w there is path on left else
+	//
 	public static void main(String[] args)
 	{
 		
