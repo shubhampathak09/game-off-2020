@@ -24,7 +24,7 @@ int main()
 		token=strtok(NULL," ");
 		cout<<token<<endl;
 	}
-	
+	// stringstream strtok
 //	cout<<strtok(NULL," ")<<endl;
 //	cout<<strtok(NULL," ")<<endl;
 //	
@@ -32,5 +32,5 @@ int main()
 	// how does this functuon now next state
 	//?
 	
-	
+// another way to tokenise	
 }
