@@ -22,6 +22,8 @@ int main()
 	
 	index=para.find(s,index+1);
 	
+	cout<<endl;
+	
 	if(index!=-1)
 	cout<<index;
 	else 
