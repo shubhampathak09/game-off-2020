@@ -13,8 +13,10 @@ struct node
 	next=NULL;
 	}
 };
+// pep allgods cses 150 mike the coder +leet
 
 
+//solution
 struct node*reverse(node*head)
 {
 	
