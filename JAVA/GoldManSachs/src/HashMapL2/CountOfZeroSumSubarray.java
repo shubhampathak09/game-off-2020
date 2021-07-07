@@ -22,7 +22,7 @@ public class CountOfZeroSumSubarray {
 		int sum=0;
 		
 		int i=-1;
-		
+		//hm.put(0, 1);
 		
 	    int count=0;
 		while(i<arr.length)
@@ -37,11 +37,11 @@ public class CountOfZeroSumSubarray {
 			if(hm.containsKey(sum)==false)
 			{
 				
-			hm.put(sum, 0);
+			hm.put(sum, 1);
 		}else
 		{
-			hm.put(sum, count+1);
-			count++;
+			hm.put(sum, hm.get(sum)+1);
+			count=count+hm.get(sum);
 		}
         
 			
