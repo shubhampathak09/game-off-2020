@@ -37,7 +37,7 @@ public class SegTreeDemo {
 					{
 						ans+=a[i];
 					}	
-						int stAns=st.rangeSum(l, r)+1;
+						int stAns=st.rangeSum(l, r);
 						System.out.print("Sample Array:");
 						for(int i=0;i<n;i++)
 						{
