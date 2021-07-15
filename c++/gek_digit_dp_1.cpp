@@ -34,7 +34,7 @@ For example if a = 5 and b = 11,
  		
  		int res=0;
  		
- 		for(int i=0;i<s[pos]-'0';i++)
+ 		for(int i=0;i<=s[pos]-'0';i++)
  		{
  			if(i==s[pos]-'0')
  			{
@@ -58,14 +58,14 @@ For example if a = 5 and b = 11,
 	     return dp[pos][tight][sum]=res;	
 	 }
  }
- 
+ //11 18 26   5 6 7 8 9 10 11 
  int main()
  {
  	
  	int a=5;
  	int b=11;
  	
- 	string a1=to_string(a--);
+ 	string a1=to_string(a-1);
  	
  	string b1=to_string(b);
  	
@@ -74,13 +74,13 @@ For example if a = 5 and b = 11,
  	
  	int ans1=solve(a1,0,1,0);
  	
- 	cout<<ans1<<endl;
+ //	cout<<ans1<<endl;
  	
  	memset(dp,-1,sizeof(dp));
  	
  	int ans2=solve(b1,0,1,0);
  	
- 	cout<<ans2;
+ //	cout<<ans2;
  	
  	cout<<ans2-ans1;
  	
