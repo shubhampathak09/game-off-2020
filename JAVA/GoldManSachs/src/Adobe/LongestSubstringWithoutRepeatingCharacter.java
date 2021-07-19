@@ -18,7 +18,7 @@ public class LongestSubstringWithoutRepeatingCharacter {
 		while(true) {
 		boolean flag1=false;
 		boolean flag2=false;
-		while(i<s.length())
+		while(i<s.length()-1)
 		{
 			
 			i++;
