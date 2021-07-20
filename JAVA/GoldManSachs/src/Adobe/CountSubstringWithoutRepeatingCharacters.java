@@ -59,7 +59,7 @@ public class CountSubstringWithoutRepeatingCharacters {
 	public static void main(String[] args)
 	{
 		
-		String s="abba";
+		String s="abba"; // a,ab,b,b,a,ba
 		int ans=solve(s);
 		
 	
