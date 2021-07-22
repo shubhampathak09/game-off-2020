@@ -76,4 +76,4 @@ public class PrintAllUniqueSubstringsWithoutRepeatingCharacters {
 	}
 	
 }
-// some onaccuracies
+// some inaccuracies
