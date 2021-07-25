@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+// also friend paring is antoher great ex
 
 
 vector<vector<int>>g(1001);
