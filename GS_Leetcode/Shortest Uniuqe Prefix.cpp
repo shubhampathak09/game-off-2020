@@ -27,13 +27,14 @@ void insert(string word,trie*&root)
 		{
 			curr->child[c]=new trie();
 		}
-			curr->child[c]->fq++;
+		curr->wr=word;
+		curr->child[c]->fq++;
 		curr=curr->child[c];
 	
 	}
     
 	curr->isend=true;
-	curr->wr=word;
+	
 }
 
 
@@ -51,7 +52,7 @@ void printShortestUniquePrefix(struct trie*root,string word_so_far)
 	{
 	//	cout<<word_so_far<<endl;
 		
-	//	result[root->wr]=word_so_far;
+		result[root->wr]=word_so_far;
 		return;
 	}
 	
@@ -83,9 +84,17 @@ int main()
 	
 	cout<<"printing the prefix.."<<endl;
 	
-
-    //cout<<result.size();
+   
+    for(auto x:result)
+    {
+    	cout<<x.first<<" "<<x.second<<endl;
+	}
+   
+   // cout<<result.size();
 	
 	// will check
+	
+	
+	// fixed think!
 }
 
