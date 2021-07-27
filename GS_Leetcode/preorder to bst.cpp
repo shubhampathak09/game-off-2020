@@ -1,3 +1,10 @@
+
+
+// process the arry
+
+// auto x: pre
+// buildnst(root,x);
+
 //preroder traversal to bst
 
 #include<bits/stdc++.h>
